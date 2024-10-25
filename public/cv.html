@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>  
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Sandwip Mall | Admin Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- css --> 
+
+    <!-- font awsome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+
+    <style>
+      
+      .row{
+        width:100%;
+      }
+      .sidebar{
+        position:absolute;
+        top:0px;
+        bottom:0px;
+        left:0px;
+        background-color:#2c384a;
+        color:white;
+        width:30%;
+        height:100%;
+      }
+
+      .mainbar{
+        margin-left: 30%;
+        width:70%;
+      }
+
+      .header, .work, .education{
+        position:relative;
+        padding:20px;
+        border:1px solid #ddd;
+        margin-bottom: 10px;
+        margin-left:10px;
+      }
+
+      .contact{
+        position:absolute;
+        right:20px;
+        top:20px;
+      }
+
+      .timeline{
+        /*margin:10px;
+        margin-bottom:none;*/
+        padding-left:15px;
+        border-left:1px solid #2c384a;
+      }
+
+      .social li{
+        list-style-type:none;
+      }
+
+      
+      .skillbox{
+        margin-top:40px;
+        padding:10px;
+      }
+
+      .skillbox i {
+        color:white;
+      }
+
+      .scon {
+        width: 100%;
+        background-color: #ddd;
+        margin-bottom:15px;
+      }
+
+      .skills {
+        text-align: right;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        color: white;
+      }
+
+      .html {width: 90%; background-color: #04AA6D;}
+      .dart {width: 80%; background-color: #2196F3;}
+      .js {width: 85%; background-color: #f44336;}
+      .php {width: 80%; background-color: #2eed11;}
+      .mysql {width: 90%; background-color: #f50589;}
+      .mongodb {width: 90%; background-color: #15a397;}
+      .server {width: 80%; background-color: #f7a40a;}
+
+
+
+    
+
+
+      /*li {
+        list-style-type:none;
+      }*/
+       
+      i{
+        margin-right: 10px;
+        color:#2c384a;
+      }
+      body{
+        font-family:Georgia, serif;
+        font-size: 11px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="row">
+        <div class="sidebar">
+          <img width="150" src="https://mpairtech.com/resources/img/arfin.png"/>
+          
+
+          <div class="skillbox">  
+             <h3 style="color:white;"><i class="fas fa-laptop-code" style="color:white"></i>Skill</h3>
+             <div class="scon">
+                <div class="skills js">Javascript</div>
+              </div>
+              <div class="scon">
+                <div class="skills dart">Dart</div>
+              </div>  
+              <div class="scon">
+                <div class="skills php">Php</div>
+              </div>
+              <div class="scon">
+                <div class="skills mysql">Mysql</div>
+              </div>
+              <div class="scon">
+                <div class="skills mongodb">Mongodb</div>
+              </div>
+              <div class="scon">
+                <div class="skills server">Server Management</div>
+              </div>
+          </div>
+
+          <div class="skillbox">
+            <div><i class="fab fa-linkedin-in"></i>/syed-arfin-hayet</div>
+            <div><i class="fab fa-twitter"></i>/syed-arfin-hayet</div>
+          </div>
+
+
+        </div>
+        <div class="mainbar">
+
+          <div class="header">
+            <div>
+              <h3>Syed <br/>Arfin Hayet</h3>
+              <h6>Software Developer</h6>
+            </div>
+            <div class="contact">
+              <ul class="social">
+                <li><i class="fa fa-map-marker"></i>Greenview R/A, Chittagong Bangladesh</li>
+                <li><i class="fa fa-inbox"></i>Arfinhayet786@gmail.com</li>
+                <li><i class="fa fa-phone"></i>+8801854652339</li>
+                <li><i class="fa fa-phone"></i>+8801533748448</li>
+              </ul>
+            </div>
+          </div>  
+
+
+
+          <div class="work">
+            <h3><i class="fa fa-history"></i> Work history</h3>
+            <div class="timeline">
+
+              <div>
+                <h6><i class="fa fa-check-circle"></i> Software Developer, mPair Technologies Ltd</h6>
+                10/11/2021 - Present
+              </div>
+
+              <ul>
+                <li>Developed and maintain Software Architechture</li>
+                <li>Developed cloud business logic with node.js</li>
+                <li>Developed mobile application with Flutter and React Native</li>
+                <li>Developed Desktop application with Electron</li>
+                <li>Developed Web Front End with React, Vue</li>
+                <li>Maintained CI/CD automations</li>
+              </ul>
+
+              <i class="fa fa-check" style="color:white"></i>
+            </div>
+            <div class="timeline">
+              <div>
+                <h6><i class="fa fa-check-circle"></i> Product Developer, Bonik Technologies</h6>
+                10/11/2020 - 01/11/2021
+              </div>
+
+              <ul>
+                <li>Developed and maintain mobile application from scratch</li>
+                <li>Worked on CI/CD automations based on Customer feedback</li>
+                <li>Developed financial tools for SME businesses</li>
+              </ul>
+
+              <i class="fa fa-check" style="color:white"></i>
+            </div> 
+          </div>
+
+
+
+
+
+
+          <div class="education">
+            <h3><i class="fas fa-graduation-cap"></i> Education</h3>
+            <div class="timeline">
+              <div>
+                <h6><i class="fa fa-check-circle"></i>B.S.S(Hon's), University Of Chittagong</h6>
+              </div>
+              <ul>
+                <li>Department - Public Administration</li>
+                <li>Graduated in 01/01/2023</li>
+              </ul>
+
+              <i class="fa fa-check" style="color:white"></i>
+            </div>
+
+            <div class="timeline">
+              <div>
+                <h6><i class="fa fa-check-circle"></i>H.S.C, Chittagong Model College</h6>
+              </div>
+              <ul>
+                <li>Group - Science</li>
+                <li>Graduated in 01/01/2017</li>
+              </ul>
+
+              <i class="fa fa-check" style="color:white"></i>
+            </div>
+
+
+            <div class="timeline">
+              <div>
+                <h6><i class="fa fa-check-circle"></i>S.S.C, Nasirabad Govt. Boys High School</h6>
+              </div>
+              <ul>
+                <li>Group - Science</li>
+                <li>Graduated in 01/01/2015</li>
+              </ul>
+
+              <i class="fa fa-check" style="color:white"></i>
+            </div>
+          </div>
+
+
+
+
+          <div class="education">
+            <h3><i class="fas fa-project-diagram"></i>  Noteable Projects</h3>
+            <div class="timeline">
+              <div>
+                <h6><i class="fa fa-check-circle"></i>Doctor appointment system (Web , Mobile application)</h6>
+              </div>
+              <ul>
+                <li>Client - Parkview Hospital Ltd.</li>
+                <li>Workplace- mPair Technologies</li>
+                <li>Link- <a href="http://parkviewappointment.com/">Web portal</a>, <a href="https://play.google.com/store/apps/details?id=com.appointment.parkview.parkviewappointment&hl=en&gl=US">Mobile Application</a></li>
+              </ul>
+
+              <i class="fa fa-check" style="color:white"></i>
+            </div>
+
+            <div class="timeline">
+              <div>
+                <h6><i class="fa fa-check-circle"></i>Flydocx- Travel Agency Management Software</h6>
+              </div>
+              <ul>
+                <li>Clients - Approximately Seven Travel Agencies</li>
+                <li>Workplace- mPair Technologies</li>
+                <li>Link- <a href="https://flydocx.com/">flyDox</a></li>
+              </ul>
+
+              <i class="fa fa-check" style="color:white"></i>
+            </div>
+
+
+            <div class="timeline">
+              <div>
+                <h6><i class="fa fa-check-circle"></i>Sowda - Independent Marketplace</h6>
+              </div>
+              <ul>
+                <li>Client - Sowda</li>
+                <li>Link- <a href="https://sowdaapp.com/">Web Portal</a>, <a href="https://play.google.com/store/apps/details?id=com.sowda">Mobile App</a></li>
+              </ul>
+
+              <i class="fa fa-check" style="color:white"></i>
+            </div>
+          </div>
+
+
+
+
+          <div class="education">
+            <h3><i class="fas fa-award"></i>  Awards</h3>
+            <div class="timeline">
+              <div>
+                <h6><i class="fa fa-check-circle"></i>Employee Of The Year 2022</h6>
+              </div>
+              <ul>
+                <li>Given By - mPair Technologies</li>
+              </ul>
+
+              <i class="fa fa-check" style="color:white"></i>
+            </div>
+
+            <div class="timeline">
+              <div>
+                <h6><i class="fa fa-check-circle"></i>National Startup Camp top 100 List for House-let (A Startup Co-founded by me)</h6>
+              </div>
+              <ul>
+                <li>Given by - Startup Bangladesh</li>
+              </ul>
+
+              <i class="fa fa-check" style="color:white"></i>
+            </div>
+
+          </div>
+
+
+
+
+
+
+    
+
+
+          
+          
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

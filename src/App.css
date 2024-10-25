@@ -1,0 +1,585 @@
+@import url(https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css);
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css);
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&display=swap");
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.nav-pills > li > a.active {
+  background-color: #f8f9fa !important;
+  border-bottom: 3px solid gray !important;
+  border-radius: 0px;
+}
+
+.sactive {
+  background-color: gray;
+}
+
+/* toogle button */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch2 {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* toogle button */
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: rgb(219, 231, 233);
+}
+
+.banner-logo {
+  height: 4rem;
+  margin-top: 3rem;
+}
+
+.banner-logo-panel {
+  height: 8rem;
+  margin-top: 1rem;
+}
+.fladmin-btn {
+  height: 3.2rem;
+  width: 20rem;
+}
+
+.superShop-btn {
+  color: white;
+  background-color: rgb(11, 176, 11);
+}
+
+.superShop-btn:hover {
+  color: white;
+  background-color: rgb(0, 134, 0);
+}
+
+.liveKitchen-btn {
+  color: white;
+  background-color: rgb(252, 2, 119);
+}
+
+.liveKitchen-btn:hover {
+  color: white;
+  background-color: rgb(226, 0, 106);
+}
+
+.elipsis-btn {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  color: gray;
+  background-color: rgb(241, 241, 241);
+}
+
+.userRole {
+  background-color: #ffffff;
+  width: 100%;
+}
+.userRole:hover {
+  width: 100%;
+  background-color: rgb(236, 236, 236);
+  color: #262626;
+}
+
+.navlogo {
+  height: 2rem;
+}
+/* Login page*/
+
+.login-btn {
+  height: 2.5rem;
+  color: white;
+  background-color: rgb(255, 145, 0);
+}
+
+.login-btn:hover {
+  height: 2.5rem;
+  color: white;
+  background-color: rgb(12, 36, 100);
+}
+
+/* User Role */
+
+.submit-btn {
+  color: white;
+  background-color: rgb(220, 152, 7);
+}
+
+.adminPanel-btn {
+  width: 100%;
+  height: 4rem;
+}
+
+.qu-btn {
+  width: 12rem;
+  height: 4.5rem;
+  border: 1px solid rgb(15, 115, 255);
+  background-color: rgb(230, 235, 221);
+}
+
+.qu-btn:hover {
+  color: white !important;
+}
+
+.barcode-btn {
+  margin-top: 2rem;
+  color: white;
+  background-color: rgb(221, 152, 3);
+}
+
+.addProduct-text {
+  color: rgb(221, 152, 3);
+}
+
+.pr-head {
+  background-color: white;
+}
+
+.panel-BackgroundH {
+  height: 91.2vh;
+}
+
+.prodListCard {
+  height: 7rem;
+}
+
+.prodListIcon {
+  font-size: 1.5rem;
+  color: grey;
+}
+
+.barcodeArea {
+  height: 10rem;
+}
+.neworderblink {
+  background-color: red;
+  text-align: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: white;
+  padding-top: 5px;
+  border-radius: 100%;
+  justify-content: center;
+  object-fit: contain;
+  position: absolute;
+  font-size: 20px;
+  top: -20%;
+  right: 5%;
+}
+
+.orders {
+  text-decoration: none;
+  padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: white;
+  border-radius: 5px;
+  margin: 0;
+  background-color: #ffce00;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.neworderblink {
+  animation: blink-animation 1s steps(5, start) infinite;
+  -webkit-animation: blink-animation 1s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+  to {
+    transform: scale(0.8);
+  }
+}
+@-webkit-keyframes blink-animation {
+  to {
+    transform: scale(1);
+  }
+}
+
+.productImg {
+  height: 20rem;
+}
+
+.prcategory {
+  max-width: 60%;
+}
+.catlistm {
+  height: 450px;
+  overflow: auto;
+}
+.catgif {
+  height: 280px;
+  object-fit: contain;
+}
+.btn-print {
+  background-color: rgb(233, 233, 233);
+  color: rgb(255, 166, 0);
+  border-radius: 0px !important;
+}
+
+.editProd-btn {
+  background-color: #ff6800;
+  border: none;
+  height: 2.8rem;
+  color: white;
+}
+.editProd-btn:hover {
+  background-color: #ff822f;
+  border: none;
+  height: 2.8rem;
+  color: rgb(0, 0, 0);
+}
+.upbttnU {
+  cursor: pointer;
+}
+
+.deletemodal {
+  top: 30%;
+}
+.btn-delete {
+  background-color: #e71212;
+  border-radius: 0px;
+  color: #fff;
+}
+
+.btn-delete:hover {
+  background-color: #c40606;
+  border-radius: 0px;
+  color: #fff;
+}
+
+.btn-cls {
+  background-color: #2e2e2e;
+  border-radius: 0px;
+  color: #fff;
+}
+
+.btn-cls:hover {
+  background-color: #242424;
+  border-radius: 0px;
+  color: #fff;
+}
+.btn-blue {
+  border-radius: 0px !important;
+  border: none;
+  background-color: #0d6efd;
+  color: white;
+}
+.btn-blue:hover {
+  border-radius: 0px !important;
+  border: none;
+  background-color: #005ce6;
+  color: white;
+}
+
+.btn-green {
+  border-radius: 0px !important;
+  border: none;
+  background-color: #0b8800;
+  color: white;
+}
+.btn-green:hover {
+  border-radius: 0px !important;
+  border: none;
+  background-color: #096900;
+  color: white;
+}
+
+.cat-card {
+  height: 7rem;
+  overflow: hidden;
+}
+.cat-card2 {
+  height: 9.5rem;
+  overflow: hidden;
+}
+.catcbtn {
+  background-color: white;
+  border-radius: 5px;
+  border: none;
+  font-size: 18px;
+}
+
+.cat-active {
+  background-color: #096900;
+  color: white;
+}
+.orderproduct {
+  border-bottom: 1px dashed #ddd;
+}
+.fa-arrow-left {
+  cursor: pointer;
+}
+.sel-items-section {
+  background-color: rgb(230, 235, 221);
+  height: 28rem;
+}
+
+.sel-items-btn {
+  background-color: white;
+  border-bottom: 4px solid gray;
+}
+
+.sel-items-list {
+  height: 18.5rem;
+}
+.sel-items-list-payment {
+  height: 20rem;
+}
+
+.addItem-form {
+  background-color: rgb(230, 235, 221);
+}
+
+.catList-Table {
+  background-color: rgb(230, 235, 221);
+  height: 20rem;
+}
+
+.imagePreview {
+  height: 13rem;
+}
+
+.addProd-btn {
+  background-color: rgb(0, 132, 255);
+  color: white;
+}
+.addProd-btn:hover {
+  background-color: rgb(0, 116, 224);
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+.addNew-btn {
+  background-color: rgb(255, 51, 85);
+  color: white;
+}
+.text-secondary {
+  color: #262626 !important;
+}
+.addprbtn {
+  background-color: rgb(255, 153, 0);
+  color: white;
+  border: none;
+  width: 10rem;
+  height: 2.5rem;
+}
+.addprbtn:hover {
+  background-color: rgb(247, 136, 0);
+  color: white;
+  border: none;
+  width: 10rem;
+  height: 2.5rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+/* INVOICE */
+#invoice {
+  padding: 0px;
+}
+.invoicetable {
+  font-size: 14px;
+}
+.invoice {
+  position: relative;
+  background-color: #fff;
+  min-height: 680px;
+  padding: 15px;
+}
+
+.invoice header {
+  padding: 10px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #0d6efd;
+}
+
+.invoice .company-details {
+  text-align: right;
+}
+
+.invoice .company-details .name {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.invoice .contacts {
+  margin-bottom: 20px;
+}
+
+.invoice .invoice-to {
+  text-align: left;
+}
+
+.invoice .invoice-to .to {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.invoice .invoice-details {
+  text-align: right;
+}
+
+.invoice .invoice-details .invoice-id {
+  margin-top: 0;
+  color: #19bc19;
+}
+
+.invoice main {
+  padding-bottom: 50px;
+}
+
+.invoice main .thanks {
+  margin-top: -100px;
+  font-size: 2em;
+  margin-bottom: 50px;
+}
+
+.invoice main .notices {
+  padding-left: 6px;
+  border-left: 6px solid #19bc19;
+  background: #e7f2ff;
+  padding: 10px;
+}
+
+.invoice main .notices .notice {
+  font-size: 1.2em;
+}
+
+.variationmodal {
+  top: 20%;
+  border-radius: none !important;
+}
+.variationmodal-b {
+  border-radius: 0px !important;
+}
+.font-color {
+  color: black !important;
+}
+@media print {
+
+  .noprint{
+    display:none;
+  }
+  .invoice {
+    font-size: 11px !important;
+    overflow: hidden !important;
+  }
+  .invoice footer {
+    position: absolute;
+    bottom: 10px;
+    page-break-after: always;
+  }
+  .invoice > div:last-child {
+    page-break-before: always;
+  }
+}
+
+.invoice main .notices {
+  padding-left: 6px;
+  border-left: 6px solid #19bc19;
+  background: #e7f2ff;
+  padding: 10px;
+}
+/* INVOICE */
+
+
+
+
+/* Loader backdrop covering the entire screen */
+.loader-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark translucent backdrop */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* Ensure it appears above other elements */
+}
+
+/* Loader spinner */
+.loader-spinner {
+  border: 8px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 8px solid #ffffff; /* Main color of the spinner */
+  width: 80px;
+  height: 80px;
+  animation: spin 1s linear infinite;
+}
+
+/* Spinning animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
