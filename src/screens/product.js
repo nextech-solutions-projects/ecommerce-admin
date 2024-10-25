@@ -26,6 +26,7 @@ function Product() {
   const [supplier,setSupplier] = useState("");
   const [activeId, setActiveId] = useState("");
   const [des,setDes] = useState([])
+  const [categoryList, setCategoryList] = useState([])
   
 
   useEffect(() => {
@@ -49,6 +50,29 @@ function Product() {
       .catch((err) => console.log(err));
   }, [count]);
 
+
+
+  
+  useEffect(()=> {
+    customFetch(`${process.env.REACT_APP_URL}category`, {
+      method: "GET",
+      headers: {
+        "Authorization":localStorage.getItem("atoken"),  // Correctly set the Content-Type
+      }
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if(res.success){
+           setCategoryList(res.payload.Category)
+        } 
+      })
+      .catch((err) => {
+        setLoading(false)
+        toast.error('Something went wrong.', {
+          icon: "🛒",
+        });
+      });
+  },[])
 
   function delProduct(id){
     window.Swal.fire({
@@ -220,9 +244,9 @@ function Product() {
                   onChange={(e) => setCate(e.target.value)}
                 >
                   <option value="">All</option>
-                  <option value="1">ইলেক্ট্রনিক ডেকোরেশন</option>
-                  <option value="2">মাইক্রোফোন</option>
-                  <option value="3">ইলেকট্রনিক্স গ্যাজেট</option>
+                  {categoryList.map((item) => (
+                      <option value={item.id}>{item.name}</option>
+                  ))}
                 </select>
               </div>
               <div class="col-auto">

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
-import logo from "../image/icons/logo.jpeg";
+import logo from "../image/icons/logo.png";
 import neworder from "../image/neworder.gif";
 import customFetch from "../fetch-wrapper"
 

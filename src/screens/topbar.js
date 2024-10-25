@@ -34,11 +34,7 @@ function Topbar() {
           >
             Customization
           </Link>
-        </div>
-
-
-
-        
+        </div>  
       </div>
     </div>
   );

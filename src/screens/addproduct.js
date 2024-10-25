@@ -6,8 +6,6 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import Topbar from "./topbar";
 import Navbar from "./navbar";
 import catgif from "../image/productcat.gif";
-import { Editor, EditorState } from "draft-js";
-import "draft-js/dist/Draft.css";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import customFetch from '../fetch-wrapper';
@@ -16,36 +14,23 @@ function Addproduct() {
 
 
   let history = useHistory();
-
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  );
   const [cname, setCname] = useState("");
   const [image, setImage] = useState("");
-
   const [pname, setPname] = useState("");
   const [quan, setQuan] = useState("");
   const [price, setPrice] = useState("");
-
   const [pimage, setPimage] = useState("");
   const [pimage2, setPimage2] = useState("");
   const [pimage3, setPimage3] = useState("");
-
   const [category, setCategory] = useState("");
   const [brand, setBrand] = useState("");
   const [pprice, setPprice] = useState("");
   const [rprice, setRprice] = useState("");
   const [des, setDes] = useState("");
-  const [lid, setLid] = useState("");
 
   const [supplier,setSupplier] = useState("");
-
-  const [cate, setCate] = useState([]);
-  const [variant, setVariant] = useState([]);
-
-  const [desImage, setDesImage] = useState([]);
+  const [categoryList, setCategoryList] = useState([]);
   const [update, setUpdate] = useState(0);
-
   const [loading, setLoading] = useState(false);
 
 
@@ -71,19 +56,28 @@ function Addproduct() {
 
   function submitHandle() {
     const data = new FormData();
-    data.append("cname", cname);
-    data.append("image", image);
-
-    console.log(cname);
-
-    customFetch(`${process.env.REACT_APP_URL}products`, {
+    data.append("name", cname);
+    data.append("icon", image);
+    customFetch(`${process.env.REACT_APP_URL}category`, {
       method: "POST",
       body: data,
+      headers: {
+        "Authorization":localStorage.getItem("atoken"),  // Correctly set the Content-Type
+      },
     })
       .then((res) => res.json())
+      .then((res) => {
+        if(res.success){
+          toast.success("Category added successfully !", {
+            icon: "🛒",
+          });
+          document.getElementById("cfrm").reset();
+          setUpdate(update+1)
+        } else {
+          toast.error(res.message)
+        }
+      })
       .catch((err) => console.log(err));
- 
-    document.getElementById("cfrm").reset();
   }
 
   function submitHandle2() {
@@ -132,6 +126,71 @@ function Addproduct() {
         });
       });
   }
+
+
+  function delCategory(id){
+    window.Swal.fire({
+      title: 'Are you sure?',
+      text: 'You can not revert this option.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes'
+    }).then(result=> {
+      if(result.isConfirmed){
+        customFetch(`${process.env.REACT_APP_URL}category/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Authorization":localStorage.getItem("atoken"),  // Correctly set the Content-Type
+          }
+        })
+        .then((res) => res.json())
+        .then((res) => {
+          setLoading(false)
+          if(res.success){
+            toast.success("Category deleted successfully !", {
+              icon: "🛒",
+            });
+            setUpdate(update+1)
+          } else {
+            toast.error(res.message, {
+              icon: "🛒",
+            });
+          }
+          
+        })
+        .catch((err) => {
+          setLoading(false)
+          toast.error('Something went wrong.', {
+            icon: "🛒",
+          });
+        });
+      }
+    })
+  }
+
+
+  useEffect(()=> {
+    customFetch(`${process.env.REACT_APP_URL}category`, {
+      method: "GET",
+      headers: {
+        "Authorization":localStorage.getItem("atoken"),  // Correctly set the Content-Type
+      }
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        if(res.success){
+           setCategoryList(res.payload.Category)
+        } 
+      })
+      .catch((err) => {
+        setLoading(false)
+        toast.error('Something went wrong.', {
+          icon: "🛒",
+        });
+      });
+  },[update])
 
   return (
     <>
@@ -198,19 +257,17 @@ function Addproduct() {
                   <div class="col-lg-6">
                     <p class="fw-bold">Category List</p>
                     <div class="catlistm">
-                      {cate.map((item) => (
-                        <li class="d-flex py-2 border-bottom">
+                      {categoryList.map((item) => (
+                        <li class="d-flex py-2 border-bottom d-flex justify-content-between">
                           <img
-                            src={
-                              "https://sowdaapp.com/sandweep/image/" +
-                              item.image
-                            }
+                            src={`${process.env.REACT_APP_URL}${item.icon}`}
                             style={{ width: 20, objectFit: "contain" }}
                             class="cate-logo mx-2"
                             alt=""
                             srcset=""
                           />
-                          <p class="b-text m-0">{item.cname}</p>
+                          <p class="b-text m-0">{item.name}</p>
+                          <i className="fa fa-trash" style={{cursor:'pointer'}} onClick={()=> delCategory(item.id)}></i>
                         </li>
                       ))}
                     </div>
@@ -231,14 +288,22 @@ function Addproduct() {
                 <h4 class="text-secondary m-0">Add Product</h4>
               </div>
               <div class="col-lg-4 row">
-                <div class="col-lg-12">
+                <div className="col-lg-6">
                   <Link
                     to={"/product"}
-                    class="btn  addProd-btn w-100 rounded-0"
+                    class="btn addProd-btn w-100 rounded-0"
                   >
                     Product List
                   </Link>
                 </div>
+                
+                <div className="col-lg-6">
+                  <button type="button" class="btn addProd-btn w-100 rounded-0" data-bs-toggle="modal" data-bs-target="#cateModal">
+                    Category
+                  </button>
+                </div>
+                
+
               </div>
             </div>
             <hr />
@@ -270,12 +335,9 @@ function Addproduct() {
                         onChange={(e) => setCategory(e.target.value)}
                       >
                         <option readonly>Select</option>
-                        <option value="1">ইলেক্ট্রনিক ডেকোরেশন</option>
-                        <option value="2">মাইক্রোফোন</option>
-                        <option value="3">ইলেকট্রনিক্স গ্যাজেট</option>
-                        {/* {cate.map((item) => (
-                          <option value={item.id}>{item.cname}</option>
-                        ))} */}
+                        {categoryList.map((item) => (
+                          <option value={item.id}>{item.name}</option>
+                        ))}
                       </select>
                     </div>
                     <div class="col-lg-6 mb-3">
@@ -413,19 +475,6 @@ function Addproduct() {
                     </div>
                   </div>
 
-                  <div className="row">
-                    {desImage.map((item) => (
-                      <div className="col-sm-3">
-                        <img
-                          src={
-                            "https://sowdaapp.com/sandweep/image/" +
-                            item.desImage
-                          }
-                          width={150}
-                        />
-                      </div>
-                    ))}
-                  </div>
                   
                 </form>
                 <div class="row">

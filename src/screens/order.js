@@ -8,9 +8,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Order() {
   const [orders, setOrders] = useState([]);
-  const [orderprod, setOrderprod] = useState([]);
-  const [user, setUser] = useState([]);
   const [update,setUpdate] = useState(0)
+  const [page,setPage] = useState(1)
+  const [hasMore,setHasMore] = useState(true)
   
 
   function print() {
@@ -18,7 +18,7 @@ function Order() {
   }
 
   useEffect(() => {
-    customFetch(`${process.env.REACT_APP_URL}orders`, {
+    customFetch(`${process.env.REACT_APP_URL}orders?page=${page}`, {
       method: "GET",
       headers: {
         "Authorization":localStorage.getItem("atoken"),  // Correctly set the Content-Type
@@ -27,9 +27,11 @@ function Order() {
       .then((res) => res.json())
       .then((res) => 
         {
-
           if(res.success){
-            setOrders(res.payload.order)
+            if(res.payload.order.length === 0){
+              setHasMore(false)
+            }
+            setOrders((prevData) => [...prevData, ...res.payload.order])
           }
         })
       .catch((err) => console.log(err));
@@ -236,10 +238,6 @@ function Order() {
                   })
                   .map((item) => (
                     <div class="row orderproduct py-3">
-
-
-
-
                       <div class="col-lg-4  panel-Background  border-end border-secondary">
                         <h6 class="text-secondary">
                           <b>Order Id: </b> {item.id}
@@ -336,6 +334,11 @@ function Order() {
                   ))}
               </div>
               <div id="orderDeliver" class="tab-pane fade">
+                 
+                 <div className="p-2 d-flex justify-content-between">
+                 <h5 class="text-secondary mt-2">Delivered Product List</h5>
+                 </div>
+              
                 {orders
                   .filter((item) => {
                     if (item.status == "delivered") {
@@ -344,9 +347,6 @@ function Order() {
                   })
                   .map((item) => (
                     <div class="row">
-                      <h5 class="text-secondary mt-2">
-                        Delivered Product List
-                      </h5>
                       <div class="col-lg-6 mt-4 panel-Background p-4">
                         <h6 class="text-secondary">
                           <b>Order Id: </b> {item.id}
@@ -379,9 +379,20 @@ function Order() {
                       </div>
                     </div>
                   ))}
+              
+              <center>
+                {hasMore && <button onClick={()=> {
+                  setPage(page+1)
+                  setUpdate(update+1)
+                }} className="btn addProd-btn w-100 rounded-0">Load More</button>}
+              </center>
+              
               </div>
 
               <div id="cancelDeliver" class="tab-pane fade">
+               <h5 class="text-secondary mt-2">
+                  Delivered Product List
+               </h5>
                 {orders
                   .filter((item) => {
                     if (item.status == "cancelled") {
@@ -390,9 +401,6 @@ function Order() {
                   })
                   .map((item) => (
                     <div class="row">
-                      <h5 class="text-secondary mt-2">
-                        Delivered Product List
-                      </h5>
                       <div class="col-lg-6 mt-4 panel-Background p-4">
                         <h6 class="text-secondary">Order Id: {item.id}</h6>
                         <h6 class="text-secondary">

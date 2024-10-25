@@ -41,14 +41,14 @@ function Invoice(props) {
               <div class="col">
                 <img
                   width="200"
-                  src={require("../image/icons/logo.jpeg")}
+                  src={require("../image/icons/logo.png")}
                   data-holder-rendered="true"
                 />
               </div>
               <div class="col company-details">
-                <div>M.B. Complex, 90 High Level Road</div>
-                <div>01533748448</div>
-                <div>sandwipmall@gmail.com</div>
+                <div>Islampur , Dhaka</div>
+                <div>01715646569</div>
+                <div>info@mayedamart.com</div>
               </div>
             </div>
           </header>

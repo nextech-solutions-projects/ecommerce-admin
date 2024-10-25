@@ -44,7 +44,7 @@ function Invoicelist() {
     }
 
     if(search !== ""){
-       url += `&id=${search}`
+       url += `&deliveryPhoneNumber=${search}`
     }
 
     customFetch(url, {
@@ -99,69 +99,66 @@ function Invoicelist() {
         <div class="loader-spinner"></div>
         </div>}
 
+
+      
         <div class="productList px-5 mb-4">
+
           <div class="bg-light rounded py-3">
-            <h4 class="text-secondary mb-3 px-5">Invoice List</h4>
-
-            <div class="row px-5">
-              <div class="col-auto">
-                <label for="staticEmail2" class="visually-hidden">
-                  Categories
-                </label>
+              <div class="row px-5">
                 
+                <div class="col-md-3">
+                  <label for="inputPassword2" class="visually-hidden">
+                    Search
+                  </label>
+                  <label>Phone Number</label>
+                  <input
+                    type="text"
+                    onChange={(e) => setSearch(e.target.value)}
+                    class="form-control"
+                    id="inputPassword2"
+                    placeholder="Phone Number"
+                  />
+                </div>
+                <div class="col-md-3">
+                  <label for="inputPassword2">
+                    Date From
+                  </label>
+                  <input
+                    type="date"
+                    value={dateFrom}
+                    onChange={(e) => setDateFrom(e.target.value)}
+                    class="form-control"
+                    id="inputPassword2"
+                    placeholder="Select date"
+                  />
+                </div>
+                <div class="col-md-3">
+                  <label for="inputPassword2">
+                    Date To
+                  </label>
+                  <input
+                    type="date"
+                    value={dateTo}
+                    onChange={(e) => setDateTo(e.target.value)}
+                    class="form-control"
+                    id="inputPassword2"
+                    placeholder="Select date"
+                  />
+                </div>
+                <div className="col-md-3">
+                  <label>Search</label>
+                  <br/>
+                  <button className="btn addProd-btn w-100 rounded-0" onClick={()=> searchInvoice()}>Search</button>
+                </div>
               </div>
-              <div class="col-auto">
-                <label for="inputPassword2" class="visually-hidden">
-                  Search
-                </label>
-                <label>Invoice Number</label>
-                <input
-                  type="text"
-                  onChange={(e) => setSearch(e.target.value)}
-                  class="form-control"
-                  id="inputPassword2"
-                  placeholder="Invoice number"
-                />
-              </div>
-              <div class="col-auto">
-                <label for="inputPassword2">
-                  Date From
-                </label>
-                <input
-                  type="date"
-                  value={dateFrom}
-                  onChange={(e) => setDateFrom(e.target.value)}
-                  class="form-control"
-                  id="inputPassword2"
-                  placeholder="Select date"
-                />
-              </div>
-              <div class="col-auto">
-                <label for="inputPassword2">
-                  Date To
-                </label>
-                <input
-                  type="date"
-                  value={dateTo}
-                  onChange={(e) => setDateTo(e.target.value)}
-                  class="form-control"
-                  id="inputPassword2"
-                  placeholder="Select date"
-                />
-              </div>
-              <div className="col-auto">
-                <label>Search</label>
-                <br/>
-                <button className="btn btn-info" onClick={()=> searchInvoice()}>Search</button>
-              </div>
-            </div>
-            <br />
+          </div>
 
+          <div class="bg-light rounded py-3 mt-3">
             <table class="table text-center fw-normal">
-                <thead>
+                <thead className="bg-light">
                   <tr class="border-top border-bottom border-secondary">
                     <th class="fw-normal text-secondary" scope="col">
-                      Invoice Number
+                      Sr. Number
                     </th>
                     <th class="fw-normal text-secondary" scope="col">
                       Customer name
